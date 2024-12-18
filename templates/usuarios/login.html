@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+
+{% block contenido %}
+<header>
+    <h1 class= "text-center mb-5">Pagina de login de usuario</h1>
+</header>
+
+<main class="container w-50 border p-4">
+    <section>
+        <div class = "row justify-content-center"> 
+            <div class = "col-12 col-md-5 col-lg-4" >
+                <form method="post" class= "text-center">
+                    {% csrf_token %}
+                    {{form}}
+                    
+                    <input type="submit" value= "iniciar sesión" class="btn btn-primary mt-3">
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock  %}

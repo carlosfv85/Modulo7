@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+ 
+{% block contenido %}
+ 
+<header>
+    <h1 class="text-center py-3">Eliminación de {{laboratorio.nombre}} </h1>
+</header>
+ 
+<main class="container">
+
+    <section>
+        <form method="post">
+            {% csrf_token %}
+            <div class="text-center">
+                <p>Estas seguro que deseas eliminar el laboratorio: {{laboratorio.nombre}}</p>
+                <a href="{% url "laboratorios" %}" ><-- Retornar</a>
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Confirmar" class="btn btn-danger mt-3">
+            </div>
+            
+        </form>
+    </section>
+</main>
+ 
+{% endblock contenido %}

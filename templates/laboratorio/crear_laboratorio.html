@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+ 
+    
+{% block contenido %}
+ 
+<header>
+    <h1 class="text-center m-5">Ingresar los Datos del Laboratorio</h1>
+</header>
+ 
+<main class="container w-50 border p-4">
+   <form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <div class="text-center">
+        <input type="submit" class="btn btn-primary mt-3 " value="Enviar">
+    </div>
+   </form>
+</main>
+
+<h6 class="ms-5 p-2">¿Información de los Laboratorios?</h6>
+<h6 class="ms-5 p-2" ><a href="{% url "laboratorios" %}">Ir a información de los laboratorios--></a></h6>
+ 
+{% endblock contenido %}

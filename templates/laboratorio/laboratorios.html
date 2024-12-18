@@ -1,0 +1,66 @@
+{% extends "layouts/base.html" %} 
+
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorios</title>
+</head>
+<body>
+    <header>
+        <h1 class="text-center p-5">Información de Laboratorios</h1>
+    </header>
+
+    <main class="container w-75 pb-5">
+
+        {% if laboratorios %}
+        <table class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Ciudad</th>
+                    <th>Pais</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for laboratorio in laboratorios %}
+                    <tr>
+                        <td>{{laboratorio.nombre}}</td>
+                        <td>{{laboratorio.ciudad}}</td>
+                        <td>{{laboratorio.pais}}</td>
+                        {% if perms.laboratorio.change_laboratorio %}
+                        <td>    
+                            <a href="{% url 'editar_laboratorio' laboratorio.id %}">
+                                <button class="btn btn-warning">Modificar</button>
+                            </a>
+                        </td>
+                        {% endif %}
+                        {% if perms.laboratorio.delete_laboratorio %}
+                            <td>
+                                <a href="{% url 'eliminar_laboratorio' laboratorio.id %}">
+                                    <button class="btn btn-danger">Eliminar</button>
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        {% else %}
+        <p class="text-center">No existen laboratorios para mostrar.</p>
+        {% endif %}
+    </main>
+
+    <h6 class="ms-5 p-2">¿Información de los Laboratorios?</h6>
+    <h6 class="ms-5 p-2" ><a href="{% url "index" %}"><-- Ir a la pagina de inicio</a></h6>
+    <h6 class="ms-5 p-2">Usted ha visitado esta pagina {{cuenta_vistas}} veces</h6>
+ 
+</body>
+</html>
+
+{% endblock contenido %}

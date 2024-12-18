@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+
+{% block contenido %}
+<main class = "container">
+    <section>
+        <h1 class ="text-center py-5">Editar laboratorio {{laboratorio.nombre}}</h1>
+    </section>
+
+    <section>
+        <div class= "container w-50 border p-4">
+                <form method ="post">
+                    {% csrf_token %}
+                    {{form}}
+                <div class="text-center">    
+                    <input type="submit" class ="btn btn-primary  mt-3" value ="Enviar">
+                </div>    
+                </form>
+            </div>
+        </div>
+
+    </section>
+</main>
+{% endblock  %}
